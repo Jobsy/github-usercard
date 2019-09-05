@@ -63,6 +63,11 @@ axios.get('https://api.github.com/users/Jobsy')
     // handle success
     // return {response[data]}
     // console.log(response.data.name);
+    // console.log(response.data);
+
+    // console.log(domElementCreator(response.data));
+    return (domElementCreator(response.data))
+
   })
   .catch(function (error) {
     // handle error
@@ -91,15 +96,15 @@ function domElementCreator(domElements) {
   const p5 = document.createElement("p");
   const p6 = document.createElement("p");
 
-  img.src = domElements.imgSrc;
+  img.src = domElements.avatar_url;
   h3.textContext = domElements.name;
-  a.textContext = domElements.address;
-  p1.textContext = domElements.userName;
+  a.href = domElements.html_url;
+  p1.textContext = domElements.login;
   p2.textContext = domElements.location;
-  p3.textContext = domElements.followers;
-  p4.textContext = domElements.followings;
-  p5.textContext = domElements.bio;
-  p6.textContext = domElements.userName;
+  p4.textContext = domElements.followers;
+  p5.textContext = domElements.following;
+  p6.textContext = domElements.bio;
+  p3.textContext = "Profile: ";
 
   div1.classList.add("card");
   div2.classList.add("card-info");
