@@ -26,6 +26,7 @@
 
 const followersArray = [
   'https://api.github.com/users/Jobsy',
+  'https://api.github.com/users/ruairidhflint',
   'https://api.github.com/users/tetondan',
   'https://api.github.com/users/dustinmyers',
   'https://api.github.com/users/justsml',
@@ -64,7 +65,7 @@ const followersArray = [
 
 
 
-function getApiData(gitHubData) {
+function getGitHubData(gitHubData) {
 
   return axios.get(gitHubData)
           .then(function (response) {
@@ -143,6 +144,6 @@ function domElementCreator(domElements) {
 
 // const componentContainer = document.querySelector(".cards");
 
-// comp.forEach((element, index) => {
-//   componentContainer.appendChild(element);
-// })
+followersArray.map((element) => {
+  getGitHubData(element);
+})
