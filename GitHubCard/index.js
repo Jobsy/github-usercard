@@ -61,7 +61,8 @@ const followersArray = [];
 axios.get('https://api.github.com/users/Jobsy')
   .then(function (response) {
     // handle success
-    console.log(response);
+    // return {response[data]}
+    // console.log(response.data.name);
   })
   .catch(function (error) {
     // handle error
@@ -70,3 +71,31 @@ axios.get('https://api.github.com/users/Jobsy')
   .finally(function () {
     // always executed
   });
+
+
+
+function domElementCreator(domElements) {
+  
+  const div1 = document.createElement("div");
+  const div2 = document.createElement("div");
+  const img = document.createElement("img");
+  const h3 = document.createElement("h3");
+  const a = document.createElement("a");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const p4 = document.createElement("p");
+  const p5 = document.createElement("p");
+  const p6 = document.createElement("p");
+
+  img.textContext = domElements.imgSrc;
+  h3.textContext = domElements.name;
+  a.textContext = domElements.address;
+  p1.textContext = domElements.userName;
+  p2.textContext = domElements.location;
+  p3.textContext = domElements.followers;
+  p4.textContext = domElements.followings;
+  p5.textContext = domElements.bio;
+  p6.textContext = domElements.userName;
+  
+}
