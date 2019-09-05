@@ -76,6 +76,9 @@ axios.get('https://api.github.com/users/Jobsy')
 
 function domElementCreator(domElements) {
   
+  debugger
+
+
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   const img = document.createElement("img");
@@ -88,7 +91,7 @@ function domElementCreator(domElements) {
   const p5 = document.createElement("p");
   const p6 = document.createElement("p");
 
-  img.textContext = domElements.imgSrc;
+  img.src = domElements.imgSrc;
   h3.textContext = domElements.name;
   a.textContext = domElements.address;
   p1.textContext = domElements.userName;
@@ -97,5 +100,23 @@ function domElementCreator(domElements) {
   p4.textContext = domElements.followings;
   p5.textContext = domElements.bio;
   p6.textContext = domElements.userName;
+
+  div1.classList.add("card");
+  div2.classList.add("card-info");
+  h3.classList.add("name");
+  p1.classList.add("username");
+
+  div1.appendChild(img);
+  div1.appendChild(div2);
+  div2.appendChild(h3);
+  div2.appendChild(p1);
+  div2.appendChild(p2);
+  div2.appendChild(p3);
+  p3.appendChild(a);
+  div2.appendChild(p4);
+  div2.appendChild(p5);
+  div2.appendChild(p6);
+
+  return div1;
   
 }
