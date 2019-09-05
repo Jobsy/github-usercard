@@ -81,7 +81,7 @@ axios.get('https://api.github.com/users/Jobsy')
 
 function domElementCreator(domElements) {
   
-  debugger
+  // debugger
 
 
   const div1 = document.createElement("div");
@@ -97,14 +97,15 @@ function domElementCreator(domElements) {
   const p6 = document.createElement("p");
 
   img.src = domElements.avatar_url;
-  h3.textContext = domElements.name;
+  h3.textContent = domElements.name;
   a.href = domElements.html_url;
-  p1.textContext = domElements.login;
-  p2.textContext = domElements.location;
-  p4.textContext = domElements.followers;
-  p5.textContext = domElements.following;
-  p6.textContext = domElements.bio;
-  p3.textContext = "Profile: ";
+  a.textContent = domElements.html_url;
+  p1.textContent = domElements.login;
+  p2.textContent = "Location: " + domElements.location;
+  p4.textContent = "Followers: " + domElements.followers;
+  p5.textContent = "Following: " + domElements.following;
+  p6.textContent = "Bio: " + domElements.bio;
+  p3.textContent = "Profile: ";
 
   div1.classList.add("card");
   div2.classList.add("card-info");
@@ -122,6 +123,16 @@ function domElementCreator(domElements) {
   div2.appendChild(p5);
   div2.appendChild(p6);
 
-  return div1;
+  const componentAdder = document.querySelector(".cards");
+  componentAdder.appendChild(div1);
+  
+  return componentAdder;
   
 }
+
+
+// const componentContainer = document.querySelector(".cards");
+
+// comp.forEach((element, index) => {
+  // componentContainer.appendChild(element);
+// })
