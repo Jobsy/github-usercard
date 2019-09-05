@@ -69,31 +69,14 @@ function getGitHubData(gitHubData) {
 
   return axios.get(gitHubData)
           .then(function (response) {
-            // handle success
-            // return {response[data]}
-            // console.log(response.data.name);
-            // console.log(response.data);
-
-            // console.log(domElementCreator(response.data));
             return (domElementCreator(response.data))
-
           })
           .catch(function (error) {
-            // handle error
             console.log(error);
           })
-          .finally(function () {
-            // always executed
-          });
-
 }
 
-
-
 function domElementCreator(domElements) {
-
-  // debugger
-
 
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
@@ -138,11 +121,7 @@ function domElementCreator(domElements) {
   componentAdder.appendChild(div1);
 
   return componentAdder;
-
 }
-
-
-// const componentContainer = document.querySelector(".cards");
 
 followersArray.map((element) => {
   getGitHubData(element);
