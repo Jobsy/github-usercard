@@ -24,7 +24,14 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'https://api.github.com/users/Jobsy',
+  'https://api.github.com/users/tetondan',
+  'https://api.github.com/users/dustinmyers',
+  'https://api.github.com/users/justsml',
+  'https://api.github.com/users/luishrd',
+  'https://api.github.com/users/bigknell'
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -57,30 +64,33 @@ const followersArray = [];
 
 
 
+function getApiData(gitHubData) {
 
-axios.get('https://api.github.com/users/Jobsy')
-  .then(function (response) {
-    // handle success
-    // return {response[data]}
-    // console.log(response.data.name);
-    // console.log(response.data);
+  return axios.get(gitHubData)
+          .then(function (response) {
+            // handle success
+            // return {response[data]}
+            // console.log(response.data.name);
+            // console.log(response.data);
 
-    // console.log(domElementCreator(response.data));
-    return (domElementCreator(response.data))
+            // console.log(domElementCreator(response.data));
+            return (domElementCreator(response.data))
 
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .finally(function () {
+            // always executed
+          });
+
+}
 
 
 
 function domElementCreator(domElements) {
-  
+
   // debugger
 
 
@@ -125,14 +135,14 @@ function domElementCreator(domElements) {
 
   const componentAdder = document.querySelector(".cards");
   componentAdder.appendChild(div1);
-  
+
   return componentAdder;
-  
+
 }
 
 
 // const componentContainer = document.querySelector(".cards");
 
 // comp.forEach((element, index) => {
-  // componentContainer.appendChild(element);
+//   componentContainer.appendChild(element);
 // })
