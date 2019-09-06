@@ -62,18 +62,16 @@ const followersArray = [
   bigknell
 */
 
+function gitHubUsersAddress(usersAddress) {
 
-
-
-function getGitHubData(gitHubData) {
-
-  return axios.get(gitHubData)
-          .then(function (response) {
-            return (domElementCreator(response.data))
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+  return axios.get(usersAddress)
+    .then(function (response) {
+      console.log(response)
+      return (domElementCreator(response.data))
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
 }
 
 function domElementCreator(domElements) {
@@ -81,8 +79,10 @@ function domElementCreator(domElements) {
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   const img = document.createElement("img");
+  // const img2 = document.createElement("img");
   const h3 = document.createElement("h3");
   const a = document.createElement("a");
+  const a2 = document.createElement("a");
   const p1 = document.createElement("p");
   const p2 = document.createElement("p");
   const p3 = document.createElement("p");
@@ -93,7 +93,9 @@ function domElementCreator(domElements) {
   img.src = domElements.avatar_url;
   h3.textContent = domElements.name;
   a.href = domElements.html_url;
+  a2.href = "https://github.com/users/Jobsy/contributions";
   a.textContent = domElements.html_url;
+  a2.textContent = "Click to see user's GitHub contribution graph";
   p1.textContent = domElements.login;
   p2.textContent = "Location: " + domElements.location;
   p4.textContent = "Followers: " + domElements.followers;
@@ -116,13 +118,14 @@ function domElementCreator(domElements) {
   div2.appendChild(p4);
   div2.appendChild(p5);
   div2.appendChild(p6);
-
+  
   const componentAdder = document.querySelector(".cards");
   componentAdder.appendChild(div1);
+  componentAdder.appendChild(a2)
 
   return componentAdder;
 }
 
-followersArray.map((element) => {
-  getGitHubData(element);
+followersArray.map((address) => {
+  gitHubUsersAddress(address);
 })
