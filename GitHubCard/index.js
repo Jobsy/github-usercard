@@ -24,7 +24,15 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'https://api.github.com/users/Jobsy',
+  'https://api.github.com/users/ruairidhflint',
+  'https://api.github.com/users/tetondan',
+  'https://api.github.com/users/dustinmyers',
+  'https://api.github.com/users/justsml',
+  'https://api.github.com/users/luishrd',
+  'https://api.github.com/users/bigknell'
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,3 +61,78 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+function gitHubUsersAddress(usersAddress) {
+
+  return axios.get(usersAddress)
+    .then(function (response) {
+      console.log(response)
+      return (domElementCreator(response.data))
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+function domElementCreator(domElements) {
+
+  const div1 = document.createElement("div");
+  const div2 = document.createElement("div");
+  const img = document.createElement("img");
+  const span = document.createElement("span");
+  const h3 = document.createElement("h3");
+  const a = document.createElement("a");
+  const a2 = document.createElement("a");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const p4 = document.createElement("p");
+  const p5 = document.createElement("p");
+  const p6 = document.createElement("p");
+
+  img.src = domElements.avatar_url;
+  span.textContent = "toggle"
+  h3.textContent = domElements.name;
+  a.href = domElements.html_url;
+  a2.href = "https://github.com/users/Jobsy/contributions";
+  a.textContent = domElements.html_url;
+  a2.textContent = "Click to see user's GitHub contribution graph";
+  p1.textContent = domElements.login;
+  p2.textContent = "Location: " + domElements.location;
+  p4.textContent = "Followers: " + domElements.followers;
+  p5.textContent = "Following: " + domElements.following;
+  p6.textContent = "Bio: " + domElements.bio;
+  p3.textContent = "Profile: ";
+
+  div1.classList.add("card");
+  div2.classList.add("card-info");
+  h3.classList.add("name");
+  span.classList.add("expandButton");
+  span.addEventListener("click", event => {
+    div1.classList.toggle("article-open")
+  });
+  p1.classList.add("username");
+
+  div1.appendChild(img);
+  div1.appendChild(div2);
+  div2.appendChild(h3);
+  div2.appendChild(p1);
+  div2.appendChild(p2);
+  div2.appendChild(p3);
+  p3.appendChild(a);
+  div2.appendChild(p4);
+  div2.appendChild(p5);
+  div2.appendChild(p6);
+  
+  const componentAdder = document.querySelector(".cards");
+  componentAdder.appendChild(div1);
+  componentAdder.appendChild(a2)
+  componentAdder.appendChild(span)
+
+
+  return componentAdder;
+}
+
+followersArray.map((address) => {
+  gitHubUsersAddress(address);
+})
