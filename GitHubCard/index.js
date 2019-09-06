@@ -79,7 +79,7 @@ function domElementCreator(domElements) {
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   const img = document.createElement("img");
-  // const img2 = document.createElement("img");
+  const span = document.createElement("span");
   const h3 = document.createElement("h3");
   const a = document.createElement("a");
   const a2 = document.createElement("a");
@@ -91,6 +91,7 @@ function domElementCreator(domElements) {
   const p6 = document.createElement("p");
 
   img.src = domElements.avatar_url;
+  span.textContent = "toggle"
   h3.textContent = domElements.name;
   a.href = domElements.html_url;
   a2.href = "https://github.com/users/Jobsy/contributions";
@@ -106,6 +107,10 @@ function domElementCreator(domElements) {
   div1.classList.add("card");
   div2.classList.add("card-info");
   h3.classList.add("name");
+  span.classList.add("expandButton");
+  span.addEventListener("click", event => {
+    div1.classList.toggle("article-open")
+  });
   p1.classList.add("username");
 
   div1.appendChild(img);
@@ -122,6 +127,8 @@ function domElementCreator(domElements) {
   const componentAdder = document.querySelector(".cards");
   componentAdder.appendChild(div1);
   componentAdder.appendChild(a2)
+  componentAdder.appendChild(span)
+
 
   return componentAdder;
 }
